@@ -1,5 +1,4 @@
-## Welcome to GitHub Pages
-<input class="favorite styled"    type="button"   value="Add to favorites">
+## Welcome to GitHub Pagesx
 You can use the [editor on GitHub](https://github.com/Ju-ae/Ju-ae.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
