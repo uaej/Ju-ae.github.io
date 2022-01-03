@@ -7,11 +7,8 @@ const TODOKEY = "todo";
 
 function deleteTodo(event){
     const li = event.target.parentElement;
-    console.log("list id : " + li.id);
     li.remove();
-    // todoArray = todoArray.filter((todo) =>  todo.id !== li.id);
     todoArray = todoArray.filter((todo)=> parseInt(li.id)  !== todo.id);
-    // console.log(todoArray.filter((todo)=> li.id !== todo.id));
     saveTodo();
 }
 
@@ -26,6 +23,7 @@ function paintTodo(newTodo){
     span.innerText = newTodo.text;
     const button = document.createElement("button");
     button.innerText = "X";
+    button.className = "button-81";
     button.addEventListener("click", deleteTodo);
     li.appendChild(span);
     li.appendChild(button);
@@ -46,9 +44,6 @@ function handleTodoSubmit(event){
     saveTodo();
 }
 
-function hello(){
-    console.log("aa");
-}
 todoForm.addEventListener("submit", handleTodoSubmit);
 
 const savedTodos = localStorage.getItem(TODOKEY);
