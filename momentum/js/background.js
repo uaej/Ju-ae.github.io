@@ -5,6 +5,6 @@ const bgImage = document.createElement("img");
 bgImage.src = `img/${chosenImage}`;
 //window 크기에 맞춰 사진 비율 뱐경
 bgImage.width = window.innerWidth;
-bgImage.height = window.innerHeight;
+bgImage.height = window.innerHeight + 5;
 document.body.appendChild(bgImage);
 document.body.classList.add("background"); 
