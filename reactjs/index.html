@@ -6,17 +6,23 @@
     <body>
         <span id= "root"></span>
         <script src= "https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
-        <scri pt src = "https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
-        <script>
+        <script src = "https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script type = "text/babel">
             var root = document.getElementById("root");
-            const span = React.createElement("h3", {
-                onMouseEnter: () => console.log("on Mouse Enter"),
-            }, "hello span");
-            const button = React.createElement("button", 
-            { 
-                onClick: () => console.log("I am clicked"),
-            }, "click me");
-            const container = React.createElement("div", null, [span, button]);
+            const title =(
+                <h3 id ="title" onMouseEnter={() => console.log("mouse enter")}>
+                i am title
+                </h3>);
+             
+            const button = (<button
+            style={{backgroundColor: "tomato",
+            }}
+            onClick={() => console.log("I am clicked")}
+            >clickme
+            </button>
+            );
+            const container = React.createElement("div", null, [title, button]);
             ReactDOM.render(container, root);
         </script>
     </body>
