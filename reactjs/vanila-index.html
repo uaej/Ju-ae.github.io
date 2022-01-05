@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <span>click times : 0</span>
+        <button id= "btn">click me!</button>
+    </body>
+    <script>
+        var span = document.querySelector("span");
+        var button = document.getElementById("btn");
+        var count =0
+        function btnClicked(){
+            count +=1; 
+            span.innerText = "click times : " + count;
+        
+        }
+        button.addEventListener("click", btnClicked)
+    </script>
+</html> 
