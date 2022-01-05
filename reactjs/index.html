@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-    
     </head>
     <body>
         <span id= "root"></span>
@@ -10,25 +9,21 @@
         <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
         <script type = "text/babel">
             const root = document.getElementById("root");
-            let counter = 0;
+            function App() {
+                let [counter, setCounter] = React.useState(0);
+                const onClick=()=>{
+                    setCounter((current) => current + 1);
+                    //현재값을 기반으로 다음 값을 계산하는 방법 => 이 방법으로 해야 다른 곳에서 수정이 일어나도 혼란스럽지 않다.
+                }
 
-            function countUp() {
-                counter = counter + 1;
-                render();
-            }
-
-            function render(){
-                ReactDOM.render(<Container />, root);
-            }
-            function Container() {
                 return(
-                <div>
-                    <h3>Total clicks: {counter}</h3>
-                    <button onClick={countUp}>click me</button>
-                </div>
+                    <div>
+                        <h3>Total clicks: {counter}</h3>
+                        <button onClick={onClick}>click me</button>
+                    </div>
                 );
             }
-            render();
+            ReactDOM.render(<App />, root);
         </script>   
     </body>
 </html>
