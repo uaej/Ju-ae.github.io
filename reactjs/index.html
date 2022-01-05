@@ -10,32 +10,25 @@
         <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
         <script type = "text/babel">
             const root = document.getElementById("root");
-            function Title(){
-                return(
-                    <h3 id ="title" onMouseEnter={() => console.log("mouse enter")}>
-                i am title
-                </h3>
-                );
+            let counter = 0;
+
+            function countUp() {
+                counter = counter + 1;
+                render();
             }
 
-            const Button = ()=>(<button
-            style={{backgroundColor: "tomato",
-            }}
-            onClick={() => console.log("I am clicked")}
-            >clickme
-            </button>
-            );
-
-            //JSX에서 컴포넌트는 반드시 첫 글자를 대문자로 작성해야 한다.
-            const Container = () =>(
+            function render(){
+                ReactDOM.render(<Container />, root);
+            }
+            function Container() {
+                return(
                 <div>
-                <Title/> 
-                <Button/>
+                    <h3>Total clicks: {counter}</h3>
+                    <button onClick={countUp}>click me</button>
                 </div>
-            );
-            //Containter와 Title은 같은 것을 다르게 표현한 것이다. 둘 다 함수이며, return값을 반환하는 코드이다.
-            
-            ReactDOM.render(<Container />, root);
-        </script>
+                );
+            }
+            render();
+        </script>   
     </body>
 </html>
