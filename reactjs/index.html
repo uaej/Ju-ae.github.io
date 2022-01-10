@@ -4,105 +4,56 @@
     </head>
     <body>
         <span id= "root"></span>
-        <script src= "https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+        <script src= "https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
         <script src = "https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
         <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script src= "https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
         <script type = "text/babel">
-            function MinutesToHours(){
-                    const [amount, setAmount] = React.useState();
-                    const [flipped, setFlipped] = React.useState(false);
-                    const onChange = (event) => {
-                        console.log("load onChange");
-                        setAmount(event.target.value);
-                     }
-
-                     const reset = () => setAmount(0);                    
-                     const flip = () => {
-                        reset(); 
-                        setFlipped((current) => !current);                   
-                    }
-            
-                    return(
-                        <div>
-                        <div>
-                            <div>
-                                <label htmlFor="Minutes">Minutes</label>
-                                <input 
-                                    onChange={onChange}
-                                    value={flipped ? amount * 60 :amount}
-                                    id="Minutes" 
-                                    placeholder="minutes" 
-                                    type="number"
-                                    disabled={flipped}></input>   
-                                </div>
-                            <div>
-                                <label htmlFor="Hours">Hours</label>
-                                <input 
-                                    id="Hours" 
-                                    onChange={onChange}
-                                    value={flipped ? amount : amount/60} 
-                                    placeholder="hours" 
-                                    type="number" 
-                                    disabled={!flipped}></input>    
-                            </div>
-                        </div>             
-                        <button onClick={reset}>Reset</button>
-                        <button onClick={flip}>Flip</button>
-                    </div>
-                );
+        
+            function Btn({text, fontSize}){
+                console.log(text + " was rendered");
+                return( 
+                    <button
+                    style={{
+                        backgroundColor: "tomato",
+                        color: "white",
+                        padding : "10px 20px",
+                        border: 0,
+                        fontSize,
+                        borderRadius: 10
+                    }}
+                    >{text}</button>
+                )
             }
-
-            function KmToMiles(){
-                var [value, setValue] = React.useState();
-                var [state, setState] = React.useState(false);
-                
-                const onChange = (event)=>{
-                    setValue(event.target.value);
-                }
-
-                const flipped=()=> setState(!state);
-                const reset = () =>setValue(0);
-
+            function ConfirmBtn(){
                 return(
-                    <div>
-                        <div>
-                            <label htmlFor="Killometer">Km</label>
-                            <input id="killo" onChange={onChange} type="number" value={state? value / 0.621371 : value} disabled={state}></input>
-                        </div>
-                        <br/>
-                        <div>
-                            <label htmlFor="Mile">Mile</label>
-                            <input id="ml" onChange={onChange} type="number" value={state?  value : value*0.621371 } disabled={!state}></input>
-                        </div>
-                        <button onClick={reset}>reset</button>
-                        <button onClick={flipped}>flipped</button>
-                    </div>   
+                    <button
+                    style={{
+                        backgroundColor: "tomato",
+                        color: "white",
+                        padding : "10px 20px",
+                        border: 0,
+                        borderRadius: 10
+                    }}>Confirm!</button>
                 )
             }
 
+            Btn.propTypes={
+                text: PropTypes.string.isRequired, 
+                fontSize: PropTypes.number
+            }
             function App(){
-                const [index, setIndex] = React.useState("xx");
-                const onSelect= (event) => {
-                    console.log(event.target.value)
-                    console.log(index);
-                    setIndex(event.target.value);
-                };
+                const [value, setValue] = React.useState("Save Changes");
+                const changeValue=()=>{
+                    setValue("Revert Changes")
+                }
                 return(
                     <div>
-                        <h1> Super Converter</h1>
-                        <select value={index} onChange={onSelect}> 
-                            <option value="xx">Select your units</option>
-                            <option value="0">km to mile</option>
-                            <option value="1">min to hour</option>
-                        </select>
-                        <hr/>
-                        {index === "xx" ? <h3>Please set your units</h3>: null}
-                        {index === "0" ? <KmToMiles /> : null}
-                        {index === "1" ? <MinutesToHours /> : null}
+                        <Btn text={value} fontSize={12}/>
+                        <Btn text="output" fontSize={12}/>
                     </div>
                 )
             }
-
             const root = document.getElementById("root");
             ReactDOM.render(<App />, root);
         </script>   
