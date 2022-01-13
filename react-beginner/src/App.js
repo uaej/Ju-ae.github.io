@@ -11,7 +11,17 @@ function Hello(){
     console.log("destroyed");
   }
 
-  useEffect(effectFunc, []);
+  useEffect(function(){
+    console.log("Hi");
+    return function(){
+      console.log("bye ");
+    }
+  }, []);
+
+  useEffect(()=>{
+    console.log("hi!!");
+    return ()=>{console.log("bye!!")}
+  }, []);
   return( 
     <h1>Hello!</h1>
   );
