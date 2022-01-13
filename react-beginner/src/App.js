@@ -2,29 +2,33 @@ import Button from "./Button"
 import styles from "./App.module.css";
 import { useEffect, useState } from "react";
 
+function Hello(){
+  function effectFunc(){
+    console.log("created :)");
+    return distFunc
+  }
+  function distFunc(){
+    console.log("destroyed");
+  }
+
+  useEffect(effectFunc, []);
+  return( 
+    <h1>Hello!</h1>
+  );
+}
+
 function App() {
-  const [counter, setValue] = useState(0);
-  const [keyword, setKeyword] = useState("");
-  const onClick=() => setValue((prev) => prev + 1);
-  const onChange = (event) => setKeyword(event.target.value);
-
-  console.log("I run all the time");
-  useEffect(() =>{
-    console.log("call api");
-  }, []);
- 
-  useEffect(()=>{
-   if(keyword !== "" && keyword.length > 4){
-    console.log("search for", keyword);
-   }
-  }, [keyword, counter]);
-
-  return (
-   <div>
-     <input value={keyword} onChange={onChange} type="text" placeholder="search here.. "/>
-     <h1>{counter}</h1>
-     <button onClick={onClick}>click me</button>
-   </div>
+  const [showing, setShowing] = useState(false);
+  const onClick = () => {
+    setShowing(!showing); 
+  }
+  return(
+    <div>
+      {
+        showing ? <Hello /> : null
+      }
+      <button onClick={onClick}> {showing ? "hide" : "show"}</button>
+    </div>
   );
 }
 
