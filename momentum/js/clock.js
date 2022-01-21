@@ -8,7 +8,5 @@ function getClock(){
     const minutes = d.getMinutes().toString().padStart(2,"0");
     const seconds = d.getSeconds().toString().padStart(2,"0");
   
-    // console.log(hour /÷\s+ ":" + minutes);
     clock.innerText =`${hour}:${minutes}:${seconds}`; 
-    // console.log(`${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`);
 }
