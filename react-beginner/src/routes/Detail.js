@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-
+import styles from "./Detail.module.css";
 
 function Detail() {
     const [loading, setLoading] = useState(true);
@@ -20,17 +20,19 @@ function Detail() {
     return (
         <div>
             {loading ?
-                <h1>Loading details</h1>
+                <h1 className={styles.detail_loading}>Loading details</h1>
                 :
-                <div>
-                    <h1>{movie.title_long}</h1>
+                <div className={styles.detail_body}>
+                    <h1 className={styles.detail_title}>{movie.title_long}</h1>
                     <img src={movie.medium_cover_image} />
-                    <h3>평점</h3><p>{movie.rating}</p>
-                    <h3>상영시간</h3>
-                    <p>{movie.runtime}</p>
-                    <a href={movie.url}>more info(Click!)</a>
-                    <hr />
-                    <p>{movie.description_intro}</p>
+                    <div className={styles.detail_content}>
+                        <h3>평점</h3><p>{movie.rating}</p>
+                        <h3>상영시간</h3>
+                        <p>{movie.runtime}</p>
+                        <a className={styles.detail_link} href={movie.url}>more info(Click!)</a>
+                        <hr />
+                        <p>{movie.description_intro}</p>
+                    </div>
                 </div>
             }
         </div>);
